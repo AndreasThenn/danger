@@ -70,6 +70,16 @@ module Danger
         nil
       end
 
+      # @return [String] A URL to the specific file, ready to be downloaded
+      def file_url(organisation: nil, repository: nil, branch: nil, path: nil)
+        branch ||= 'master'
+      
+        puts "file_url: https://#{host}/#{organisation}/#{repository}/raw/#{branch}/#{path}"
+        "https://#{host}/#{organisation}/#{repository}/raw/#{branch}/#{path}"
+
+        
+      end
+
       def update_pull_request!(warnings: [], errors: [], messages: [], markdowns: [], danger_id: "danger", new_comment: false, remove_previous_comments: false)
         delete_old_comments(danger_id: danger_id) if !new_comment || remove_previous_comments
 
